@@ -143,7 +143,7 @@ function M.select_menu_item()
     log.trace("cmd-ui#select_menu_item()")
     local cmd = vim.fn.line(".")
     close_menu(true)
-    local answer = vim.fn.input("Terminal index (default to 1): ")
+    local answer = vim.fn.input("Terminal index (1): ")
     if answer == "" then
         answer = "1"
     end
