@@ -149,8 +149,10 @@ function M.select_menu_item()
     end
     local idx = tonumber(answer)
     if idx then
-        local t = ToggleTerminal:new({ cmd = cmd, count = idx })
+        local t = ToggleTerminal:new({ cmd = "echo hi", count = 2 })
         t:toggle()
+
+        -- term.sendCommand(idx, cmd)
     end
 end
 
