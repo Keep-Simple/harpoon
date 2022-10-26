@@ -149,7 +149,7 @@ function M.select_menu_item()
     end
     local idx = tonumber(answer)
     if idx then
-        vim.cmd(string.format("%dTermExec cmd=%s", idx, cmd))
+        vim.cmd(string.format([[%dTermExec cmd="%s"]], idx, cmd))
     end
 end
 
