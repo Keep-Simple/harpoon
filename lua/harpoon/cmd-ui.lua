@@ -3,6 +3,7 @@ local popup = require("plenary.popup")
 local utils = require("harpoon.utils")
 local log = require("harpoon.dev").log
 local term = require("harpoon.term")
+local ToggleTerminal = require("toggleterm.terminal").Terminal
 
 local M = {}
 
@@ -148,7 +149,8 @@ function M.select_menu_item()
     end
     local idx = tonumber(answer)
     if idx then
-        term.sendCommand(idx, cmd)
+        local t = ToggleTerminal:new({ cmd = cmd, count = idx })
+        t:toggle()
     end
 end
 
