@@ -149,10 +149,7 @@ function M.select_menu_item()
     end
     local idx = tonumber(answer)
     if idx then
-        local t = ToggleTerminal:new({ cmd = "echo hi", count = 2 })
-        t:toggle()
-
-        -- term.sendCommand(idx, cmd)
+        vim.cmd(string.format("%dTermExec cmd=%s", idx, cmd))
     end
 end
 
