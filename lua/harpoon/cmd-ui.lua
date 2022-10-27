@@ -150,7 +150,7 @@ function M.select_menu_item()
     local idx = tonumber(answer)
     if idx then
         cmd = harpoon.get_term_config().cmds[cmd]
-        vim.cmd(string.format("%dTermExec cmd=%s", idx, cmd))
+        vim.cmd(string.format('%dTermExec cmd="%s"', idx, cmd))
     end
 end
 
