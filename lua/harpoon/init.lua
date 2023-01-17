@@ -1,4 +1,5 @@
 local Path = require("plenary.path")
+local Json = require("pretty.json")
 local utils = require("harpoon.utils")
 local Dev = require("harpoon.dev")
 local log = Dev.log
@@ -10,10 +11,8 @@ local cache_config = string.format("%s/harpoon.json", data_path)
 
 local M = {}
 
-local the_primeagen_harpoon = vim.api.nvim_create_augroup(
-    "THE_PRIMEAGEN_HARPOON",
-    { clear = true }
-)
+local the_primeagen_harpoon =
+    vim.api.nvim_create_augroup("THE_PRIMEAGEN_HARPOON", { clear = true })
 
 vim.api.nvim_create_autocmd({ "BufLeave, VimLeave" }, {
     callback = function()
@@ -139,7 +138,7 @@ function M.save()
     M.refresh_projects_b4update()
 
     log.trace("save(): Saving cache config to", cache_config)
-    Path:new(cache_config):write(vim.fn.json_encode(HarpoonConfig), "w")
+    Path:new(cache_config):write(Json.stringify(HarpoonConfig, nil, 4), "w")
 end
 
 local function read_config(local_config)
