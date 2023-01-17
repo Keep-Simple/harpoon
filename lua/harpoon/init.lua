@@ -1,5 +1,4 @@
 local Path = require("plenary.path")
-local Json = require("harpoon.json")
 local utils = require("harpoon.utils")
 local Dev = require("harpoon.dev")
 local log = Dev.log
@@ -138,7 +137,7 @@ function M.save()
     M.refresh_projects_b4update()
 
     log.trace("save(): Saving cache config to", cache_config)
-    Path:new(cache_config):write(Json:pretty_print(HarpoonConfig), "w")
+    Path:new(cache_config):write(vim.json.encode(HarpoonConfig), "w")
 end
 
 local function read_config(local_config)
