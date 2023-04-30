@@ -3,7 +3,7 @@ local popup = require("plenary.popup")
 local utils = require("harpoon.utils")
 local log = require("harpoon.dev").log
 local term = require("harpoon.term")
-local ToggleTerminal = require("toggleterm.terminal").Terminal
+local toggleterm = require("toggleterm").exec
 
 local M = {}
 
@@ -150,7 +150,7 @@ function M.select_menu_item()
     local idx = tonumber(answer)
     if idx then
         cmd = harpoon.get_term_config().cmds[cmd]
-        vim.cmd(string.format('%dTermExec cmd="%s"', idx, cmd))
+        toggleterm(cmd, idx)
     end
 end
 
